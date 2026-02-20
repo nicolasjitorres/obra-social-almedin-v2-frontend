@@ -1,4 +1,3 @@
-// src/hooks/useNotifications.ts
 import { useEffect, useState } from 'react'
 import { useAuthStore } from '../store/authStore'
 
