@@ -4,6 +4,7 @@ import { useAuthStore } from '../../store/authStore'
 import ThemeToggle from '../ui/ThemeToggle'
 import Logo from '../ui/Logo'
 import MobileMenu from '../ui/MobileMenu'
+import NotificationBell from '../ui/NotificationBell'
 
 const NAV_ITEMS = [
   { path: '/specialist/dashboard', label: 'Inicio' },
@@ -40,6 +41,7 @@ export default function SpecialistLayout({ children }: { children: React.ReactNo
           <span className="aff-user">
             Dr/a. <strong>{user?.fullName?.split(' ')[0]}</strong>
           </span>
+          <NotificationBell />
           <ThemeToggle />
           <button className="aff-logout" onClick={() => { logout(); navigate('/') }}>
             Salir
