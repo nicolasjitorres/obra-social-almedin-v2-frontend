@@ -44,8 +44,8 @@ const STATUS_LABELS: Record<string, string> = {
 };
 
 export default function AdminDashboard() {
-  const [statusFilter, setStatusFilter] = useState("ALL");
-  const [search, setSearch] = useState("");
+  const [statusFilter] = useState("ALL");
+  const [search] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("date");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [page, setPage] = useState(0);
