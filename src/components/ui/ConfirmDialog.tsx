@@ -27,7 +27,7 @@ export default function ConfirmDialog({
         </>
       }
     >
-      <p style={{ color: 'var(--cream)', fontSize: '0.9rem', lineHeight: 1.6 }}>
+      <p style={{ color: 'var(--color-cream)', fontSize: '0.9rem', lineHeight: 1.6 }}>
         {message}
       </p>
     </Modal>

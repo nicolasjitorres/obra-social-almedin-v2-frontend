@@ -323,7 +323,7 @@ export default function SchedulesPage() {
               fontSize: "0.65rem",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
-              color: "var(--muted)",
+              color: "var(--color-muted)",
               whiteSpace: "nowrap",
             }}
           >
@@ -354,8 +354,8 @@ export default function SchedulesPage() {
                   left: 0,
                   right: 0,
                   zIndex: 50,
-                  background: "var(--ink-soft)",
-                  border: "1px solid var(--border)",
+                  background: "var(--color-accent-soft)",
+                  border: "1px solid var(--color-border)",
                   borderTop: "none",
                   maxHeight: 220,
                   overflowY: "auto",
@@ -365,7 +365,7 @@ export default function SchedulesPage() {
                   <div
                     style={{
                       padding: "0.85rem 1rem",
-                      color: "var(--muted)",
+                      color: "var(--color-muted)",
                       fontSize: "0.82rem",
                       fontStyle: "italic",
                     }}
@@ -387,8 +387,8 @@ export default function SchedulesPage() {
                         fontSize: "0.83rem",
                         color:
                           selectedSpecialistId === s.id
-                            ? "var(--gold)"
-                            : "var(--cream)",
+                            ? "var(--accent)"
+                            : "var(--color-cream)",
                         background:
                           selectedSpecialistId === s.id
                             ? "rgba(201,168,76,0.07)"
@@ -413,7 +413,7 @@ export default function SchedulesPage() {
                       <div
                         style={{
                           fontSize: "0.72rem",
-                          color: "var(--muted)",
+                          color: "var(--color-muted)",
                           marginTop: "0.1rem",
                         }}
                       >
@@ -432,7 +432,7 @@ export default function SchedulesPage() {
             <div
               style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
             >
-              <span style={{ fontSize: "0.72rem", color: "var(--muted)" }}>
+              <span style={{ fontSize: "0.72rem", color: "var(--color-muted)" }}>
                 {sortedSchedules.length} horario
                 {sortedSchedules.length !== 1 ? "s" : ""}
               </span>
@@ -454,11 +454,11 @@ export default function SchedulesPage() {
       {!selectedSpecialistId ? (
         <div
           style={{
-            background: "var(--ink-soft)",
-            border: "1px solid var(--border)",
+            background: "var(--color-accent-soft)",
+            border: "1px solid var(--color-border)",
             padding: "4rem",
             textAlign: "center",
-            color: "var(--muted)",
+            color: "var(--color-muted)",
             fontStyle: "italic",
             fontSize: "0.88rem",
           }}

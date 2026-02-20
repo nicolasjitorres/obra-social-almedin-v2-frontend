@@ -91,12 +91,12 @@ function CancelModal({
       }
     >
       <form id="cancel-form" onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div style={{ marginBottom: '1rem', padding: '0.85rem 1rem', background: 'rgba(201,168,76,0.05)', border: '1px solid var(--border)' }}>
-          <div style={{ fontSize: '0.72rem', color: 'var(--muted)', marginBottom: '0.3rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Turno</div>
-          <div style={{ color: 'var(--cream)', fontSize: '0.88rem' }}>
+        <div style={{ marginBottom: '1rem', padding: '0.85rem 1rem', background: 'rgba(201,168,76,0.05)', border: '1px solid var(--color-border)' }}>
+          <div style={{ fontSize: '0.72rem', color: 'var(--color-muted)', marginBottom: '0.3rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Turno</div>
+          <div style={{ color: 'var(--color-cream)', fontSize: '0.88rem' }}>
             {appointment.affiliateName} → {appointment.specialistName}
           </div>
-          <div style={{ color: 'var(--muted)', fontSize: '0.78rem', marginTop: '0.2rem' }}>
+          <div style={{ color: 'var(--color-muted)', fontSize: '0.78rem', marginTop: '0.2rem' }}>
             {appointment.date} · {appointment.startTime?.slice(0, 5)} · {TYPE_LABELS[appointment.type] ?? appointment.type}
           </div>
         </div>
@@ -131,8 +131,8 @@ function DetailModal({ appointment, onClose }: { appointment: AppointmentRespons
   const Field = ({ label, value }: { label: string; value?: string | number | boolean | null }) => (
     value != null && value !== '' ? (
       <div style={{ marginBottom: '0.85rem' }}>
-        <div style={{ fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '0.3rem' }}>{label}</div>
-        <div style={{ color: 'var(--cream)', fontSize: '0.88rem', lineHeight: 1.5 }}>{String(value)}</div>
+        <div style={{ fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: '0.3rem' }}>{label}</div>
+        <div style={{ color: 'var(--color-cream)', fontSize: '0.88rem', lineHeight: 1.5 }}>{String(value)}</div>
       </div>
     ) : null
   )
@@ -154,7 +154,7 @@ function DetailModal({ appointment, onClose }: { appointment: AppointmentRespons
         {appointment.cancellationReason && <Field label="Motivo cancelación" value={appointment.cancellationReason} />}
       </div>
       {appointment.clinicalNotes && (
-        <div style={{ marginTop: '0.5rem', paddingTop: '1rem', borderTop: '1px solid var(--border)' }}>
+        <div style={{ marginTop: '0.5rem', paddingTop: '1rem', borderTop: '1px solid var(--color-border)' }}>
           <Field label="Notas clínicas" value={appointment.clinicalNotes} />
         </div>
       )}
