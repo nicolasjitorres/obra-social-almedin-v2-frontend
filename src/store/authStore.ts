@@ -18,7 +18,7 @@ export const useAuthStore = create<AuthState>()(
       setAuth: (user, token) => set({ user, token }),
       logout: () => {
         set({ user: null, token: null })
-        localStorage.clear()
+        localStorage.removeItem("almedin-auth")
         sessionStorage.clear()
         fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
           method: 'POST',
