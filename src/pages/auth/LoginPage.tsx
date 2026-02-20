@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -17,9 +17,18 @@ type FormData = z.infer<typeof schema>;
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const { token, user } = useAuthStore();
   const setAuth = useAuthStore((s) => s.setAuth);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (token && user) {
+      if (user.role === "ADMIN") navigate("/admin/dashboard");
+      else if (user.role === "AFFILIATE") navigate("/affiliate/dashboard");
+      else navigate("/specialist/dashboard");
+    }
+  }, [token, user, navigate]);
 
   const {
     register,
