@@ -12,6 +12,15 @@ import SpecialistsPage from "./pages/admin/SpecialistsPage";
 import AppointmentsPage from "./pages/admin/AppointmentsPage";
 import SchedulesPage from "./pages/admin/SchedulesPage";
 import PenaltiesPage from "./pages/admin/PenaltiesPage";
+import AffiliateDashboard from "./pages/affiliate/AffiliateDashboard";
+import AffiliateAppointmentsPage from "./pages/affiliate/AffiliateAppointmentsPage";
+import BookAppointmentPage from "./pages/affiliate/BookAppointmentPage";
+import SpecialistProfilePage from "./pages/specialist/SpecialistProfilePage";
+import SpecialistDashboard from "./pages/specialist/SpecialistDashboard";
+import SpecialistSchedulesPage from "./pages/specialist/SpecialistSchedulesPage";
+import SpecialistAgendaPage from "./pages/specialist/SpecialistAgendaPage";
+import SpecialistPatientsPage from "./pages/specialist/SpecialistPatientsPage";
+import AffiliateProfilePage from "./pages/affiliate/AffiliateProfilePage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -86,6 +95,80 @@ function App() {
             element={
               <ProtectedRoute roles={["ADMIN"]}>
                 <PenaltiesPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/affiliate/dashboard"
+            element={
+              <ProtectedRoute roles={["AFFILIATE"]}>
+                <AffiliateDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/affiliate/appointments"
+            element={
+              <ProtectedRoute roles={["AFFILIATE"]}>
+                <AffiliateAppointmentsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/affiliate/book"
+            element={
+              <ProtectedRoute roles={["AFFILIATE"]}>
+                <BookAppointmentPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/affiliate/profile"
+            element={
+              <ProtectedRoute roles={["AFFILIATE"]}>
+                <AffiliateProfilePage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/specialist/dashboard"
+            element={
+              <ProtectedRoute roles={["SPECIALIST"]}>
+                <SpecialistDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/specialist/agenda"
+            element={
+              <ProtectedRoute roles={["SPECIALIST"]}>
+                <SpecialistAgendaPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/specialist/patients"
+            element={
+              <ProtectedRoute roles={["SPECIALIST"]}>
+                <SpecialistPatientsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/specialist/schedules"
+            element={
+              <ProtectedRoute roles={["SPECIALIST"]}>
+                <SpecialistSchedulesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/specialist/profile"
+            element={
+              <ProtectedRoute roles={["SPECIALIST"]}>
+                <SpecialistProfilePage />
               </ProtectedRoute>
             }
           />

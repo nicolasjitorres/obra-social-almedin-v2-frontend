@@ -163,7 +163,7 @@ export default function AdminDashboard() {
         </div>
         <div className="metric-card">
           <div className="metric-label">Pendientes</div>
-          <div className="metric-value" style={{ color: "var(--gold)" }}>
+          <div className="metric-value" style={{ color: "var(--accent)" }}>
             {stats?.pendingAppointments ?? "—"}
           </div>
           <div className="metric-sub">

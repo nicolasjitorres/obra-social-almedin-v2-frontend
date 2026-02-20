@@ -8,6 +8,6 @@ interface SortIconProps {
 
 export default function SortIcon({ col, sortKey, sortDir }: SortIconProps) {
   return sortKey === col
-    ? <span style={{ color: 'var(--gold)', marginLeft: 4 }}>{sortDir === 'asc' ? '↑' : '↓'}</span>
-    : <span style={{ color: 'var(--muted)', marginLeft: 4, opacity: 0.4 }}>↕</span>
+    ? <span style={{ color: 'var(--color-accent)', marginLeft: 4 }}>{sortDir === 'asc' ? '↑' : '↓'}</span>
+    : <span style={{ color: 'var(--color-muted)', marginLeft: 4, opacity: 0.4 }}>↕</span>
 }
