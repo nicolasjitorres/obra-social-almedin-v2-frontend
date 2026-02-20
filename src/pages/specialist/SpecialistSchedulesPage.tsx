@@ -42,7 +42,7 @@ function ScheduleFormModal({ schedule, onClose, onSuccess }: { schedule: any; on
   const isEdit = !!schedule
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ScheduleForm>({
-    resolver: zodResolver(scheduleSchema),
+    resolver: zodResolver(scheduleSchema) as any,
     defaultValues: schedule ? {
       dayOfWeek:    schedule.dayOfWeek,
       startTime:    schedule.startTime?.slice(0,5),

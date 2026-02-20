@@ -64,7 +64,7 @@ const SPECIALITY_LABELS: Record<string, string> = {
   MEDICINA_GENERAL: "Medicina General",
 };
 
-// ─── Validation ───────────────────────────────────────────────────────────────
+// Validation
 const schema = z.object({
   dayOfWeek: z.string().min(1, "Requerido"),
   startTime: z.string().min(1, "Requerido"),
@@ -76,7 +76,7 @@ const schema = z.object({
 });
 type FormData = z.infer<typeof schema>;
 
-// ─── Schedule Form Modal ──────────────────────────────────────────────────────
+// Schedule form modal
 function ScheduleForm({
   schedule,
   specialistId,
@@ -96,7 +96,7 @@ function ScheduleForm({
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema) as any,
     defaultValues: schedule
       ? {
           dayOfWeek: schedule.dayOfWeek,
@@ -104,7 +104,7 @@ function ScheduleForm({
           endTime: schedule.endTime?.slice(0, 5),
           slotDuration: schedule.slotDuration,
         }
-      : { slotDuration: 30 },
+      : { dayOfWeek: "", startTime: "", endTime: "", slotDuration: 30 },
   });
 
   const onSubmit = async (data: FormData) => {
@@ -115,9 +115,11 @@ function ScheduleForm({
       endTime: data.endTime + ":00",
       slotDuration: data.slotDuration,
     };
-    isEdit
-      ? await api.put(`/schedules/${schedule!.id}`, body)
-      : await api.post("/schedules", body);
+    if (isEdit && schedule) {
+      await api.put(`/schedules/${schedule.id}`, body);
+    } else {
+      await api.post("/schedules", body);
+    }
     qc.invalidateQueries({ queryKey: ["schedules", specialistId] });
     onSuccess();
   };
@@ -432,7 +434,9 @@ export default function SchedulesPage() {
             <div
               style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
             >
-              <span style={{ fontSize: "0.72rem", color: "var(--color-muted)" }}>
+              <span
+                style={{ fontSize: "0.72rem", color: "var(--color-muted)" }}
+              >
                 {sortedSchedules.length} horario
                 {sortedSchedules.length !== 1 ? "s" : ""}
               </span>
