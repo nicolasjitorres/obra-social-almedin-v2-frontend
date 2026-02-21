@@ -24,12 +24,9 @@ interface AppointmentRow {
   startTime: string;
   status: string;
   type: string;
-  affiliateResponse: { firstName: string; lastName: string };
-  specialistResponse: {
-    firstName: string;
-    lastName: string;
-    speciality: string;
-  };
+  affiliateName: string;
+  specialistName: string;
+  specialistSpeciality?: string;
 }
 
 type SortKey = "date" | "status" | "type" | "affiliate" | "specialist";
@@ -71,10 +68,10 @@ export default function AdminDashboard() {
       const q = search.toLowerCase();
       rows = rows.filter(
         (r) =>
-          `${r.affiliateResponse?.firstName} ${r.affiliateResponse?.lastName}`
+          `${r.affiliateName}`
             .toLowerCase()
             .includes(q) ||
-          `${r.specialistResponse?.firstName} ${r.specialistResponse?.lastName}`
+          `${r.specialistName}`
             .toLowerCase()
             .includes(q),
       );
@@ -95,12 +92,12 @@ export default function AdminDashboard() {
         vb = b.type;
       }
       if (sortKey === "affiliate") {
-        va = a.affiliateResponse?.lastName ?? "";
-        vb = b.affiliateResponse?.lastName ?? "";
+        va = a.affiliateName ?? "";
+        vb = b.affiliateName ?? "";
       }
       if (sortKey === "specialist") {
-        va = a.specialistResponse?.lastName ?? "";
-        vb = b.specialistResponse?.lastName ?? "";
+        va = a.specialistName ?? "";
+        vb = b.specialistName ?? "";
       }
       return sortDir === "asc" ? va.localeCompare(vb) : vb.localeCompare(va);
     });
@@ -213,11 +210,7 @@ export default function AdminDashboard() {
               </span>
             ),
             render: (appt) =>
-              appt.affiliateResponse ? (
-                `${appt.affiliateResponse.firstName} ${appt.affiliateResponse.lastName}`
-              ) : (
-                <span className="td-muted">—</span>
-              ),
+              appt.affiliateName ?? <span className="td-muted">—</span>,
           },
           {
             key: "specialist",
@@ -237,15 +230,9 @@ export default function AdminDashboard() {
             render: (appt) => (
               <>
                 <div>
-                  {appt.specialistResponse ? (
-                    `${appt.specialistResponse.firstName} ${appt.specialistResponse.lastName}`
-                  ) : (
-                    <span className="td-muted">—</span>
-                  )}
+                  {appt.specialistName ?? <span className="td-muted">—</span>}
                 </div>
-                <div className="td-muted">
-                  {appt.specialistResponse?.speciality}
-                </div>
+                <div className="td-muted">{appt.specialistSpeciality}</div>
               </>
             ),
           },
